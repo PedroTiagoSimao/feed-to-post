@@ -46,23 +46,44 @@ function sftp_options_page(){
             <!-- <?php var_dump($sftp_options); ?> -->
  
 			<h4><?php _e('Opções do Feed de Notícias', 'sftp_domain'); ?></h4>
-            <p>SHORTCODE <input type="text" value="[slap_get_posts_via_rest]" style="width: 200px" readonly/></p>
+            <table>
+                <tr>
+                    <td>SHORTCODE</td>
+                    <td><input type="text" value="[slap_get_posts_via_rest]" style="width: 200px" readonly/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="description" for="sftp_settings[posts_feed_url]"><?php _e('Feed de Notícias', 'sftp_domain'); ?></label>
+                    </td>
+                    <td>
+                        <input type="text" id="sftp_settings[posts_feed_url]" name="sftp_settings[posts_feed_url]" value="<?php echo $sftp_options['posts_feed_url']; ?>" style="width: 600px"/>
+                    </td>
+                    <td style="font-size:9px">http://URL/wp-json/wp/v2/posts?filter[posts_per_page]=-1</td>
+                </tr>
+                <tr>
+                    <td><label class="description" for="sftp_settings[posts_to_show]"><?php _e('Número de Notícias', 'sftp_domain'); ?></label></td>
+                    <td>
+                        <?php $posts_to_show = $sftp_options['posts_to_show']; ?>
+                        <select id="sftp_settings[posts_to_show]" name="sftp_settings[posts_to_show]">
+                            <option value='3' <?php echo $posts = $posts_to_show == 3 ? 'selected' : ''; ?>>3</option>
+                            <option value='6' <?php echo $posts = $posts_to_show == 6 ? 'selected' : ''; ?>>6</option>
+                            <option value='9' <?php echo $posts = $posts_to_show == 9 ? 'selected' : ''; ?>>9</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
             <p>
-                <label class="description" for="sftp_settings[posts_feed_url]"><?php _e('Feed de Notícias', 'sftp_domain'); ?></label>
-                <input type="text" id="sftp_settings[posts_feed_url]" name="sftp_settings[posts_feed_url]" value="<?php echo $sftp_options['posts_feed_url']; ?>" style="width: 600px"/>
+                
+                
             </p>
             <!-- <p>
                 <label class="description" for="sftp_settings[posts_category]"><?php _e('Categoria Única (Deixe em branco para todas)', 'sftp_domain'); ?></label>
                 <input type="text" id="sftp_settings[posts_category]" name="sftp_settings[posts_category]" value="<?php echo $sftp_options['posts_category']; ?>"/>
             </p> -->
 			<p>
-				<label class="description" for="sftp_settings[posts_to_show]"><?php _e('Número de Notícias as Mostrar', 'sftp_domain'); ?></label>
-				<?php $posts_to_show = $sftp_options['posts_to_show']; ?>
-                <select id="sftp_settings[posts_to_show]" name="sftp_settings[posts_to_show]">
-                    <option value='3' <?php echo $posts = $posts_to_show == 3 ? 'selected' : ''; ?>>3</option>
-                    <option value='6' <?php echo $posts = $posts_to_show == 6 ? 'selected' : ''; ?>>6</option>
-                    <option value='9' <?php echo $posts = $posts_to_show == 9 ? 'selected' : ''; ?>>9</option>
-                </select>
+				
+				
 			</p>
  
 			<p class="submit">
